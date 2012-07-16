@@ -3,4 +3,4 @@
 python3
 
 ### Usage
-python jamendo.py inputfile outputfile
+    python jamendo.py inputfile outputfile
