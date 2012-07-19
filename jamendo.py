@@ -1,10 +1,15 @@
 import urllib.request
 import sys
 import re
+if (sys.argv[1] == "-i" and len(sys.argv) == 4):
+	fileHandler = open (sys.argv[2], 'r')
+	outputfile = sys.argv[3]
+	artisturls = fileHandler.readlines()
+else:
+	artisturls = []
+	artisturls.append(sys.argv[1])
+	outputfile = sys.argv[2]
 
-fileHandler = open (sys.argv[1], 'r')
-outputfile = sys.argv[2]
-artisturls = fileHandler.readlines()
 for artisturl in artisturls:
 	startid = artisturl.find("/artist/")
 	endid = artisturl.find("/",startid+8)
