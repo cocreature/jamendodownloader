@@ -1,6 +1,6 @@
 import urllib.request
 import sys
-import re
+
 if (sys.argv[1] == "-i" and len(sys.argv) == 4):
 	fileHandler = open (sys.argv[2], 'r')
 	outputfile = sys.argv[3]
@@ -15,7 +15,7 @@ for artisturl in artisturls:
 	endid = artisturl.find("/",startid+8)
 	artistid = artisturl[startid+8:endid]
 	print (artistid)
-	
+
 	fetchalbums = urllib.request.urlopen("http://api.jamendo.com/get2/id+name/album/plain?n=all&artist_id="+artistid)
 	albums = fetchalbums.readlines()
 	i = 0
@@ -33,8 +33,8 @@ for artisturl in artisturls:
 	downloadlinks = []
 	fileHandle = open (outputfile,'a')
 	for i in range(len(albumids)):
-		downloadlinks.append("http://storage-new.newjamendo.com/download/a" + 
-		albumids[i] + 
+		downloadlinks.append("http://storage-new.newjamendo.com/download/a" +
+		albumids[i] +
 		"/mp32/")
 		redirect = urllib.request.urlopen(downloadlinks[i])
 		downloadlinks[i] = redirect.url
